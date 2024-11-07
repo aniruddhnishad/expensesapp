@@ -1,0 +1,64 @@
+<%- include('../../includes/head-freelancer'); %>
+
+  <%- include('../../includes/header-freelancer'); %>
+
+    <div class="container-fluid">
+      <div class="row">
+        <%- include('../../includes/sidebar-menu-freelancer'); %>
+
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div
+              class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Dashboard</h1>
+              <%- include('../../includes/alert'); %>
+            </div>
+            <div class="row">
+              <div class="col-xl-12" id="freelancerDashboard">
+                <div class="row">
+                  <div class="col col-xl-3 col-lg-3 col-md-4 col-sm-6" id="getAssignmentsDiv"
+                    style="overflow-y: scroll; max-height:calc(100vh - 100px);">
+
+                    <% if(assignmentsData) {%>
+                      <% for(var i=0; i< assignmentsData.length; i++) {%>
+                        <a href="/dashboard/freelancer/getassignments/<%= assignmentsData[i].assignment_id %>"
+                          target="_blank">
+                          <div class="col col-xl-12">
+                            <span class="badge <% if(assignmentsData[i].status == 'New') {%>
+                    bg-success <% }else if (assignmentsData[i].status == 'Assigned') { %> 
+                    bg-info <% }else if (assignmentsData[i].status == 'Rework') { %>
+                    bg-warning <% } %>
+                  ">
+                              <%= assignmentsData[i].status %>
+                            </span>
+                            <p>
+                              <%= assignmentsData[i].assignment_id %>
+                            </p>
+                            <p>
+                              <%= assignmentsData[i].website_name %>
+                            </p>
+                          </div>
+                        </a>
+                        <hr>
+
+                        <% } %>
+
+                          <% }else { %>
+
+                            <p>No assignment data found!</p>
+
+                            <% } %>
+                  </div>
+                  <div class="col col-xl-9 col-lg-9 col-md-8 col-sm-6" id="getAssignmentDiv"
+                    style="overflow-y: scroll; max-height:calc(100vh - 100px);">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+      </div>
+    </div>
+
+
+
+    <%- include('../../includes/footer-freelancer'); %>

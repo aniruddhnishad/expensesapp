@@ -1,0 +1,33 @@
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="/">Freelancer</a>
+<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<ul class="navbar-nav d-flex">
+    <% if(typeof roles !== "undefined" && roles && roles.length !== 0 && roles.length !== 1) { %>
+     <li class="nav-item">
+      <div class="row">
+        <div class="col col-xl-8 col-lg-10 col-md-10">
+          <select class="form-select form-select" id="switchRole">
+            <% for(let i=0; i < roles.length; i++) { %>
+            <option value="<%= roles[i] %>"><%= roles[i][0] %><%= roles[i].slice(1).toLowerCase() %></option>
+            <% } %>
+          </select>
+        </div>
+        <div class="col col-xl-2 col-lg-1 col-md-1">
+          <button type="button" class="btn btn-outline-light" id="switchRoleBtn" name="switchRoleBtn"><i class="fa-solid fa-check"></i></button>
+          <div class="alert d-none" id="switchRoleMessage"></div>
+          <div class="spinner-border text-primary d-none" role="status" id="switchRoleLoading"></div>
+        </div>
+        <div class="col col-xl-2 col-lg-1 col-md-1">
+          <button type="button" class="btn btn-outline-light" id="logoutBtn" name="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i></button>
+          <div class="alert d-none" id="logoutMessage"></div>
+          <div class="spinner-border text-primary d-none" role="status" id="logoutLoading"></div>
+        </div>
+      </div>
+    </li>
+    <% } %>
+    
+  </ul>
+</header>

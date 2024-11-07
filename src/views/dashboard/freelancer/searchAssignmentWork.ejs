@@ -1,0 +1,14 @@
+<% if(assignment !==undefined && assignment.length !==0) {%>
+
+<ul class="list-group">
+  <% for(var i=0; i < assignment.length; i++) {%>
+  <li class="list-group-item" style="cursor: pointer;" onclick="getAssignment('<%= assignment[i].work_id %>', '<%= assignment[i].assignment_id %>', '<%= assignment[i].website_name %>')">
+    <%= assignment[i].assignment_id %> <sup class="ms-3"><span class="badge bg-info ms-3">
+        <%= assignment[i].sender_status %>
+      </span></sup>
+  </li>
+  <% } %>
+</ul>
+<% }else { %>
+<p>No assignment data found!</p>
+<% } %>

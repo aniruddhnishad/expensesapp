@@ -1,0 +1,218 @@
+<div class="container-fluid">
+
+  <% if(assignment) {%>
+  <input type="hidden" id="work_id" value="<%= assignment.work_id %>">
+  <input type="hidden" id="assignment_id" value="<%= assignment.assignment_id %>">
+  <input type="hidden" id="user_id" value="<%= assignment.sender_id %>">
+  <input type="hidden" id="receiver_id" value="<%= assignment.approved_expert %>">
+  <input type="hidden" id="receiver_name" value="<%= assignment.receiver_name %>">
+  <input type="hidden" id="website_name" value="<%= assignment.website_name %>">
+  <input type="hidden" id="bucket_name" value="<%= assignment.bucket_name %>">
+  <div class="row">
+    <div class="col col-xl-12">
+      <div class="row">
+        <div class="col col-xl-12">
+          <span>
+            <%= assignment.assignment_id ? assignment.assignment_id : '' %>
+          </span> <span class="badge bg-light text-dark ms-3">
+            <%= assignment.website_name ? assignment.website_name : 'no website' %>
+          </span> <sup class="ms-3"><span class="badge bg-info ms-3">
+              <%= assignment.sender_status %>
+            </span></sup>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col col-xl-2">
+          <span>Title:</span>
+        </div>
+        <div class="col col-xl-10">
+          <span>
+            <%= assignment.title ? assignment.title : '' %>
+          </span>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col col-xl-2">
+          <span>Subject:</span>
+        </div>
+        <div class="col col-xl-10">
+          <span>
+            <%= assignment.subject ? assignment.subject : '' %>
+          </span>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col col-xl-2">
+          <span>Reference:</span>
+        </div>
+        <div class="col col-xl-10">
+          <span>
+            <%= assignment.reference ? assignment.reference : '' %>
+          </span>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col col-xl-2">
+          <span>Word Count:</span>
+        </div>
+        <div class="col col-xl-10">
+          <span>
+            <%= assignment.word_count ? assignment.word_count : 0 %>
+          </span>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col col-xl-2">
+          <span>Requirement:</span>
+        </div>
+        <div class="col col-xl-10">
+          <textarea class="form-control" name="requirement" id="requirement" rows="3"><%= assignment.requirement ? assignment.requirement : 'No requirements provided!' %></textarea>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col col-xl-2">
+          <span>Deadline:</span>
+        </div>
+        <div class="col col-xl-10">
+          <span>
+            <%= assignment.deadline ? assignment.deadline : '' %>
+          </span>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col col-xl-2">
+          <span>Offer Amount:</span>
+        </div>
+        <div class="col col-xl-10">
+          <span>
+            <%= assignment.offer_amount ? assignment.offer_amount : 0.00 %>
+            <%= assignment.currency ? assignment.currency : 'INR' %>
+          </span>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col col-xl-2">
+          <span>Messages:</span>
+        </div>
+        <div class="col col-xl-10">
+          <div id="getAssignmentWorkMessageDiv" class="border" style="overflow: scroll; max-height: 20rem;">
+            <div class="container-fluid">
+
+              <% if(assignment.messages) {%>
+
+              <ul class="list-group" id="getMessageDataId">
+
+                <% for(var i=0; i < assignment.messages.length; i++) { %>
+
+                <div class="row p-2">
+                  <div class="col col-xl-12">
+                    <li class="list-group-item">
+                      <div class="row">
+                        <div class="col col-xl-12">
+                          <div class="row">
+                            <div class="col col-xl-12">
+                              <strong>
+                                <%= assignment.messages[i].sender_name ? assignment.messages[i].sender_name : ''
+                                        %>
+                              </strong><strong>
+                                <%= assignment.messages[i].receiver_name ? assignment.messages[i].receiver_name
+                                        : '' %>
+                              </strong><span class="badge bg-success ms-3"><small>
+                                  <%= assignment.messages[i].send_time ? assignment.messages[i].send_time : '' %>
+                                </small></span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col col-xl-12 bg-light border">
+                          <div class="row">
+                            <% if(assignment.messages[i].message && assignment.messages[i].message !=='' ) { %>
+                            <div class="col col-xl-12 bg-light border">
+                              <%- assignment.messages[i].message %>
+                            </div>
+                            <% } %>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </div>
+                </div>
+
+                <% } %>
+              </ul>
+              <% } else { %>
+              <p id="getMessageDataId">No message data found!</p>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col col-xl-12">
+          <h6>Attachments</h6>
+          <div id="attachmentDataDiv">
+            <% if(assignment.attachments_data && assignment.attachments_data.length !==0) {%>
+            <% for( var i=0; i< assignment.attachments_data.length; i++) {%>
+            <div class="row">
+              <div class="col col-xl-12">
+                <a href="<%=  appConfig.PHP_API %>/downloadfile.php?key=<%= assignment.attachments_data[i].key %>" target="_blank">
+                  <%= assignment.attachments_data[i].file_name %>
+                </a>
+              </div>
+            </div>
+            <% } %>
+            <% }else { %>
+            <span>No attachments found!</span>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col col-xl-12">
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-assignmentacceptdatatab-tab" data-bs-toggle="pill" data-bs-target="#pills-assignmentacceptdatatab" type="button" role="tab" aria-controls="pills-assignmentacceptdatatab" aria-selected="false">Accept</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-assignmentrejectdatatab-tab" data-bs-toggle="pill" data-bs-target="#pills-assignmentrejectdatatab" type="button" role="tab" aria-controls="pills-assignmentrejectdatatab" aria-selected="false">Reject</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade" id="pills-assignmentacceptdatatab" role="tabpanel" aria-labelledby="pills-assignmentacceptdatatab-tab">
+          <div id="assignmentAcceptDataDiv">
+            <div class="row">
+              <div class="col col-xl-12 mt-3">
+                <label for="wordcount" class="form-label">Message</label>
+                <textarea class="form-control" name="receiver_message_accept" id="receiver_message_accept" rows="3"></textarea>
+                <button type="button" class="btn btn-outline-success mt-3" id="acceptAssignmentBtn" name="acceptAssignmentBtn" onclick="acceptAssignment('<%= assignment.work_id %>', '<%= assignment.assignment_id %>')">Accept</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pills-assignmentrejectdatatab" role="tabpanel" aria-labelledby="pills-assignmentrejectdatatab-tab">
+          <div id="assignmentRejectDataDiv">
+            <div class="row">
+              <div class="col col-xl-12 mt-3">
+                <label for="wordcount" class="form-label">Message</label>
+                <textarea class="form-control" name="receiver_message_reject" id="receiver_message_reject" rows="3"></textarea>
+                <button type="button" class="btn btn-outline-danger mt-3" id="rejectAssignmentBtn" name="rejectAssignmentBtn" onclick="rejectAssignment('<%= assignment.work_id %>', '<%= assignment.assignment_id %>')">Reject</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% }else { %>
+
+<p>No assignment data found!</p>
+
+<% } %>
+</div>

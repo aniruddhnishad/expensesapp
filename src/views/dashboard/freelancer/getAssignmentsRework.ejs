@@ -1,0 +1,66 @@
+<%- include('../../includes/head-freelancer'); %>
+
+<%- include('../../includes/header-freelancer'); %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%- include('../../includes/sidebar-menu-freelancer'); %>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <%- include('../../includes/alert'); %>
+      </div>
+      <div class="row">
+        <div class="col-xl-12" id="freelancerDashboard">
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="row">
+                <div class="col col-lg-10">
+                  <div class="mb-3">
+                    <label for="searchedAssignmentId" class="form-label">Search Assignment Work</label>
+                    <input type="text" class="form-control" id="searchedAssignmentId">
+                  </div>
+                </div>
+                <div class="col col-lg-2">
+                  <div class="mb-3">
+                    <button type="button" class="btn btn-outline-primary mt-4" id="searchAssignmentWorkBtn" name="searchAssignmentWorkBtn" onclick="searchAssignmentWork()"><i class="fa-solid fa-check"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-xl-2 col-lg-3 col-md-3 col-sm-6" id="searchedAssignmentWorkDiv">
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col col-xl-2 col-lg-3 col-md-3 col-sm-6" id="getAssignmentsDiv">
+              <% if(assignmentsData && assignmentsData.length !==0) {%>
+              <ul class="list-group">
+                <% for(var i=0; i < assignmentsData.length; i++) {%>
+                <li class="list-group-item" style="cursor: pointer;" onclick="getAssignmentRework('<%= assignmentsData[i].work_id %>', '<%= assignmentsData[i].assignment_id %>', '<%= assignmentsData[i].website_name %>')">
+                  <%= assignmentsData[i].assignment_id %> <sup class="ms-3"><span class="badge bg-warning ms-3">
+                      <%= assignmentsData[i].sender_status %>
+                    </span></sup>
+                </li>
+                <% } %>
+              </ul>
+              <% }else { %>
+              <p>No assignment data found!</p>
+              <% } %>
+            </div>
+            <div class="col col-xl-10 col-lg-9 col-md-9 col-sm-6 mb-6" id="getAssignmentDiv">
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </main>
+</div>
+</div>
+
+
+
+<%- include('../../includes/footer-freelancer'); %>

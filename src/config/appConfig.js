@@ -1,0 +1,49 @@
+import * as dotenv from 'dotenv'
+
+dotenv.config()
+
+const appConfig = {
+  PORT: process.env.PORT,
+
+  AUDIENCE: process.env.AUDIENCE,
+
+  ISSUER: process.env.ISSUER,
+
+  JWTID: process.env.JWTID,
+
+  SUBJECT: process.env.SUBJECT,
+
+  JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
+
+  ENCRYPTION_KEY_API: process.env.ENCRYPTION_KEY_API,
+
+  COOKIE_SECRET: process.env.COOKIE_SECRET,
+
+  SESSION_SECRET_KEY: process.env.SESSION_SECRET_KEY,
+
+  FREELANCERS_API: process.env.ASSIGNMENTS_API,
+
+  FREELANCERS_API_APP_TOEKN: process.env.FREELANCERS_API_APP_TOEKN,
+
+  FREELANCERS_API_CRON_TOEKN: process.env.FREELANCERS_API_CRON_TOEKN,
+
+  ASSIGNMENTS_API: process.env.ASSIGNMENTS_API,
+
+  ASSIGNMENTS_API_APP_TOKEN: process.env.ASSIGNMENTS_API_APP_TOKEN,
+
+  NOTIFICATION_API: process.env.NOTIFICATION_API,
+
+  NOTIFICATION_API_APP_TOKEN: process.env.NOTIFICATION_API_APP_TOKEN,
+
+  USERS_API: process.env.USERS_API,
+
+  USERS_API_APP_TOEKN: process.env.USERS_API_APP_TOEKN,
+
+  PHP_API: process.env.PHP_API,
+
+  PHP_API_TOKEN: process.env.PHP_API_TOKEN,
+
+  APP_FILE_VERSION: '1725089261853',
+}
+
+export default appConfig

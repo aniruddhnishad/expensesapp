@@ -1,0 +1,71 @@
+<div class="container-fluid">
+
+  <% if(messages) {%>
+
+  <ul class="list-group">
+
+    <% for(var i=0; i < messages.length; i++) { %>
+
+    <div class="row p-2">
+      <div class="col col-xl-12" id="message_id_<%= messages[i].message_id ? messages[i].message_id : '' %>">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col col-xl-12">
+              <div class="row">
+                <div class="col col-xl-12">
+                  <strong>
+                    <%= messages[i].sender ? messages[i].sender : '' %>
+                  </strong> <i class="fas fa-arrow-right"></i> <strong>
+                    <%= messages[i].receiver ? messages[i].receiver : '' %>
+                  </strong><span class="badge bg-success ms-3"><small>
+                      <%= messages[i].send_time ? messages[i].send_time : '' %>
+                    </small></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-xl-12 bg-light border">
+              <div class="row">
+                <% if(messages[i].message && messages[i].message !=='' ) { %>
+                <div class="col col-xl-12 bg-light border">
+                  <%- messages[i].message %>
+                </div>
+                <% } %>
+                <% let attachment_ids_array=messages[i]['attachments_data'] ? messages[i]['attachments_data'] :
+                          []; %>
+
+                <% if(attachment_ids_array && attachment_ids_array.length !==0) { %>
+                <div class="message-file-attachment">
+                  <div class="row">
+
+                    <% for( let i=0; i < attachment_ids_array.length; i++) { %>
+
+                    <% for (let j=0; j < attachments.length; j++) {%>
+
+                    <% if (attachments[j]['attachment_id']===attachment_ids_array[i]) { %>
+
+                    <div class="col-md-12"><a href="<%= PHP_API; %>/download-file.php?key=<%= attachments[j]['enc_file']; %>" target="_blank" title="<%= attachments[j]['file_name']; %>">
+                        <%= attachments[j]['file_name']; %>
+                      </a></div>
+                    <% } } %>
+
+                    <% } %>
+                  </div>
+                </div>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </li>
+      </div>
+    </div>
+
+    <% } %>
+  </ul>
+  <% } else { %>
+
+  <p id="getMessageDataId">No message data found!</p>
+
+  <% } %>
+</div>

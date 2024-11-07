@@ -1,0 +1,49 @@
+<div class="container-fluid">
+
+  <% if(messages) {%>
+
+  <ul class="list-group">
+
+    <% for(var i=0; i < messages.length; i++) { %>
+
+    <div class="row p-2">
+      <div class="col col-xl-12">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col col-xl-12">
+              <div class="row">
+                <div class="col col-xl-12">
+                  <strong>
+                    <%= messages[i].sender_name ? messages[i].sender_name : '' %>
+                  </strong><strong>
+                    <%= messages[i].receiver_name ? messages[i].receiver_name : '' %>
+                  </strong><span class="badge bg-success ms-3"><small>
+                      <%= messages[i].send_time ? messages[i].send_time : '' %>
+                    </small></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-xl-12 bg-light border">
+              <div class="row">
+                <% if(messages[i].message && messages[i].message !=='' ) { %>
+                <div class="col col-xl-12 bg-light border">
+                  <%- messages[i].message %>
+                </div>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </li>
+      </div>
+    </div>
+
+    <% } %>
+  </ul>
+  <% } else { %>
+
+  <p id="getMessageDataId">No message data found!</p>
+
+  <% } %>
+</div>

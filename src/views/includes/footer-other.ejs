@@ -1,0 +1,14 @@
+<script>
+  var FREELANCERS_API = '<%= appConfig.FREELANCERS_AP ? appConfig.FREELANCERS_API : "https://assignmentsapi.lcapis.app" %>'
+  var ASSIGNMENTS_API = '<%= appConfig.ASSIGNMENTS_API ? appConfig.ASSIGNMENTS_API : "https://assignmentsapi.lcapis.app" %>'
+  var USERS_API = '<%= appConfig.USERS_API ? appConfig.USERS_API : "https://usersapi.lcapis.app" %>'
+  var NOTIFICATION_API = '<%= appConfig.NOTIFICATION_API ? appConfig.NOTIFICATION_API : "https://notificationsapi.lcapis.app" %>'
+  var PHP_API = '<%= appConfig.PHP_API ? appConfig.PHP_API : "https://phpapi.lcapis.app" %>'
+</script>
+<script src="/static/js/axios.min.js"></script>
+<script src="/static/js/jquery-3.6.4.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/script-dashboard.js?v=<%= appConfig.APP_FILE_VERSION %>"></script>
+<script src="/static/js/script-other.js?v=<%= appConfig.APP_FILE_VERSION %>"></script>
+  </body>
+</html>

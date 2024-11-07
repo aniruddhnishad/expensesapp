@@ -1,0 +1,34 @@
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
+  <div class="position-sticky pt-3 sidebar-sticky">
+    <ul class="nav flex-column" id="nav_accordion">
+      <li class="nav-item has-submenu">
+        <a class="nav-link" href="#"> Assignments <i class="fas fa-caret-down"></i> </a>
+        <ul class="submenu collapse">
+          <li><a class="nav-link" href="/dashboard/freelancer/getassignmentsreceived">Received</a></li>
+          <li><a class="nav-link" href="/dashboard/freelancer/getassignmentsaccepted">Accepted</a></li>
+          <li><a class="nav-link" href="/dashboard/freelancer/getassignmentsapproved">Approved</a> </li>
+          <li><a class="nav-link" href="/dashboard/freelancer/getassignmentsrework">Rework</a> </li>
+          <li><a class="nav-link" href="/dashboard/freelancer/getassignmentsreviewed">Reviewed</a> </li>
+          <li><a class="nav-link" href="/dashboard/freelancer/getassignmentscompleted">Completed</a> </li>
+          <li><a class="nav-link" href="/dashboard/freelancer/getassignmentsrejected">Rejected</a> </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard/chat">Chat</a>
+      </li>
+      <li class="nav-item">
+        <a href="/dashboard/getallnotification" class="ms-3" id="notificationLink"><i class="fas fa-bell fa-lg"
+            id="notificationIcon"></i><sup class="badge badge-danger text-dark" id="notificationCount">0</sup></a>
+      </li>
+      <li class="nav-item mt-3">
+        <div class="row">
+          <div class="col col-xl-2 col-lg-1 col-md-1">
+            <i class="fa-solid fa-right-from-bracket fa-xl ms-3" id="logoutBtn" name="logoutBtn"></i>
+            <div class="alert d-none" id="logoutMessage"></div>
+            <div class="spinner-border text-primary d-none" role="status" id="logoutLoading"></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
